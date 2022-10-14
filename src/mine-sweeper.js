@@ -23,9 +23,38 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+ function minesweeper( matrix ) {
+  let newMatrix = [];
+    matrix.forEach((el)=>newMatrix.push(el.slice(0)));
+ for (let i=0; i<matrix.length; i++){
+
+  for (let j=0; j<matrix[i].length; j++){
+        let k = 1;
+      console.log('i=',i);
+      console.log('j=',j);
+      console.log('mat=',matrix[i][j]);
+console.log('right=',matrix[i][j+1]);
+      console.log('left=',matrix[i][j-1]);
+
+       newMatrix[i][j] = 0;
+      
+    if(matrix[i][j-1] === true) newMatrix[i][j] = k++;
+    if(matrix[i][j+1] === true) newMatrix[i][j] = k++;
+    if(matrix[i-1] ){
+      console.log('up=',matrix[i-1][j]);  
+      if(matrix[i-1][j] === true) newMatrix[i][j] = k++;
+        if(matrix[i-1][j-1] === true) newMatrix[i][j] = k++;
+        if(matrix[i-1][j+1] === true) newMatrix[i][j] = k++;
+    }
+    if(matrix[i+1]){
+        console.log('down=',matrix[i+1][j]);
+      if(matrix[i+1][j] === true) newMatrix[i][j] = k++;
+        if(matrix[i+1][j-1] === true) newMatrix[i][j] = k++;
+        if(matrix[i+1][j+1] === true) newMatrix[i][j] = k++;
+    }
+  }
+ }
+ return newMatrix;
 }
 
 module.exports = {
